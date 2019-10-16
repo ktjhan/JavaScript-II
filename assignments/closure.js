@@ -4,6 +4,26 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
+function country(countryName){
+  const lang1 = "English";
+  const lang2 = "Spanish";
+ console.log(`${countryName} is the second biggest country in the world`);
+
+  function state(provName){
+    const sport = 'football'
+    console.log(`the most popular sport in ${provName} is ${sport}`);
+
+    function capital(cityName){
+      const food = 'hot dog'
+      console.log(`${cityName} is the capital of ${countryName} and the offical language are ${lang1} and ${lang2} and the national food is ${food} the national sport is ${sport}`);
+    }// this closes the capital
+    capital('Washington D.C.');
+  }// this closes the province
+  state('California')
+}// this closes the country
+country('U.S.A.');
+
+
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
@@ -12,10 +32,15 @@
 const counterMaker = () => {
   // IMPLEMENTATION OF counterMaker:
   // 1- Declare a `count` variable with a value of 0. We will be mutating it, so declare it using `let`!
+  let count = 0;
   // 2- Declare a function `counter`. It should increment and return `count`.
+  function counter() {
+    count++;
+  }
   //      NOTE: This `counter` function, being nested inside `counterMaker`,
   //      "closes over" the `count` variable. It can "see" it in the parent scope!
   // 3- Return the `counter` function.
+  return counter;
 };
 // Example usage: const myCounter = counterMaker();
 // myCounter(); // 1
